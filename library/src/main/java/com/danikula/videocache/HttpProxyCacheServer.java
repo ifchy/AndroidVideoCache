@@ -346,7 +346,7 @@ public class HttpProxyCacheServer {
      */
     public static final class Builder {
 
-        private static final long DEFAULT_MAX_SIZE = 512 * 1024 * 1024;
+        private static final long DEFAULT_MAX_SIZE = 1024 * 1024 * 1024;
 
         private File cacheRoot;
         private FileNameGenerator fileNameGenerator;
@@ -355,6 +355,7 @@ public class HttpProxyCacheServer {
         private HeaderInjector headerInjector;
 
         public Builder(Context context) {
+            System.out.println("1024 * 1024 * 1024 BUILDER...." + DEFAULT_MAX_SIZE);
             this.sourceInfoStorage = SourceInfoStorageFactory.newSourceInfoStorage(context);
             this.cacheRoot = StorageUtils.getIndividualCacheDirectory(context);
             this.diskUsage = new TotalSizeLruDiskUsage(DEFAULT_MAX_SIZE);
